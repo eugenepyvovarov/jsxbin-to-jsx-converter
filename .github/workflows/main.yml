@@ -26,5 +26,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: Inveigh
+        name: jsxbin_to_jsx
         path: "D:/a/jsxbin_to_jsx/jsxbin_to_jsx/jsxbin_to_jsx/obj/Debug/"
