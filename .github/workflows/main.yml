@@ -1,0 +1,30 @@
+name: Build JSXBIN
+ 
+on: [push]
+ 
+jobs:
+  build:
+ 
+    runs-on: windows-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code
+     
+    - name: Setup MSBuild Path
+      uses:  warrenbuckley/Setup-MSBuild@v1
+       
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+
+    - name: Restore NuGet Packages
+      run: nuget restore jsxbin_to_jsx.sln
+ 
+    - name: Build App
+      run: msbuild jsxbin_to_jsx.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+ 
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Inveigh
+        path: "D:/a/jsxbin_to_jsx/jsxbin_to_jsx/jsxbin_to_jsx/obj/Debug/"
