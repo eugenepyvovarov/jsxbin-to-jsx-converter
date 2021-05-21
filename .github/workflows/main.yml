@@ -12,6 +12,8 @@ jobs:
       name: Checkout Code
      
     - name: Setup MSBuild Path
+      env:
+         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       uses:  warrenbuckley/Setup-MSBuild@v1
        
     - name: Setup NuGet
